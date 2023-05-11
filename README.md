@@ -1,9 +1,14 @@
-# Virtual-Escape-Room-AWS-practictioner-theme
+# Virtual Escape Room AWS Practictioner Theme
 
 # Opening:
 Ive created an online escape room for my fellow friends in AWS RE/START program at Appleseed Academy ("עמותת תפוח") ,to challenge them with all the subjects we learn in the course- SQL,AWS cloud,Web,Binary and more.
 The game required them to split into groups and work together to solve the puzzles, which we conducted via Zoom. Each group had a member who shared their screen.
 
+https://view.genial.ly/64590ee6788efc001274a89e/interactive-content-aws-cloud-practitioner
+
+Unfortunately, you can't play without an instructor that will set up the first challenge.
+But if you insist and are willing to play differently - decipher the code and the next clue will be in a branch.
+GOOD LUCK!
 
 # Difficulties:
 # 1. How in hell do I make an escape room? let alone,a VIRTUAL ONE?
@@ -17,9 +22,8 @@ The game required them to split into groups and work together to solve the puzzl
   With help of Google,Youtube and a lot of common-sense- in a few hours I already started working on my game. The first few hours went on choosing a template.
 # 4. Building The Actual Puzzles
    Well,for some I didn't need any other tools, but for the encrypted message or the crossword I definitely needed some guidance. For that I found some online generators that were great and made everything easier.
-# 5. Run EC2 instance with static IP for Challenge 3.
-    I had idea for challenge that needed static IP to send the player to it for the next hint.
-    sadly, I have AWS Sand-Box that run upto 3 hours for free. I decided to make the Challenge 3: "Binary Explorer"
+# 5. Making the game run independently
+Unfortunately, due to the limited duration of the AWS Sand-Box, players won't be able to locate the specific S3 bucket for the first challege if the instructor didnt configure one in-time. As this game was designed as an educational activity, an instructor is necessary to guide players in their thought process and achieve the desired learning outcomes. *Therefore, I created the game with minimal hints to encourage critical thinking and problem-solving skills.*
     
     
 # Outline:
@@ -37,7 +41,7 @@ The game required them to split into groups and work together to solve the puzzl
 
 #  Inside Mini-Game -
 5 quations from AWS Cloud Practitioner exam.
-The player is in a dark room and needed to find and choose the right answer.
+The player is in a dark room and needed to find and choose the right answer between all the wrong ones.
 ![image](https://github.com/liormat401/Virual-Escape-Room-AWS-practictioner-theme/assets/126070709/20c6806a-ca06-42cc-aa28-bfcfc04a39f6)
 
 
