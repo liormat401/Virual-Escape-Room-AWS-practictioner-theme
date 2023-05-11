@@ -31,6 +31,7 @@ Unfortunately, due to the limited duration of the AWS Sand-Box, players won't be
    Players will enter the virtual escape room and be presented with a mysterious message that they must decipher,
    that will reveal the name of the S3 bucket where the next challenge awaits.
    This challenge will test their problem-solving skills and knowledge of cryptography.
+    Made with - https://www.eslkidsgames.com/esl-cipher-maker-tool
    ![image](https://github.com/liormat401/Virual-Escape-Room-AWS-practictioner-theme/assets/126070709/91b8b12a-1ec5-469b-bd19-4678a10c96df)
 
 
@@ -60,6 +61,7 @@ Binary code that they must decipher to reveal the IP address of the next challen
 
 # Challenge 5: "Escape Key Crossword" -
 Finally, players will need to complete the last challenge to escape the virtual room. This challenge will test their knowledge of aws cloud products.
+Made with - https://crosswordlabs.com/
 ![image](https://github.com/liormat401/Virual-Escape-Room-AWS-practictioner-theme/assets/126070709/0725871b-8511-41ae-b57c-24ac69edef7d)
 
 
