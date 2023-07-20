@@ -2,12 +2,12 @@
 
 # Opening:
 Ive created an online escape room for my fellow friends in AWS RE/START program at Appleseed Academy ("עמותת תפוח") ,to challenge them with all the subjects we learn in the course- SQL,AWS cloud,Web,Binary and more.
-The game required them to split into groups and work together to solve the puzzles, which we conducted via Zoom. Each group had a member who shared their screen.
+The game required them to split into groups and work together to solve the puzzles, which we conducted via Zoom. Each group had one member who shared their screen.
 
 https://view.genial.ly/64590ee6788efc001274a89e/interactive-content-aws-cloud-practitioner
 
 Unfortunately, you can't play without an instructor that will set up the first challenge.
-But if you insist and are willing to play differently - decipher the code and the next clue will be in a branch.
+But if you insist and are willing to play differently - decipher the code and the next clue will be in one of the branches.
 GOOD LUCK!
 
 # Difficulties:
