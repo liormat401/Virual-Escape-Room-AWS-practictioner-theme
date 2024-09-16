@@ -1,0 +1,440 @@
+## FIND THE POLICY THAT DENIES ACCESS TO RESOURCE ##
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Sid": "BucketsBucketWhoDis"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-little-bucket"
+            ],
+            "Sid": "BucketFullOfUnicorns"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-little-bucket/*"
+            ],
+            "Sid": "UnicornDataAccess"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances",
+                "ec2:RebootInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-west-2:123456789012:instance/*"
+            ],
+            "Sid": "Ec2AndTheCity"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:us-west-2:123456789012:my-topic"
+            ],
+            "Sid": "Snsational"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sqs:SendMessage",
+                "sqs:ReceiveMessage"
+            ],
+            "Resource": [
+                "arn:aws:sqs:us-west-2:123456789012:my-queue"
+            ],
+            "Sid": "QueueMeIn"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": [
+                "arn:aws:lambda:us-west-2:123456789012:function:my-function"
+            ],
+            "Sid": "Lambada"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "glacier:ListVaults"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Sid": "FrozenDataAccess"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:GetMetricStatistics"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Sid": "MetricMeInTheMiddle"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateUser",
+                "iam:DeleteUser",
+                "iam:ListUsers"
+            ],
+            "Resource": [
+                "arn:aws:iam::123456789012:user/*"
+            ],
+            "Sid": "UserMngmntIsAPainInTheAccess"
+        }
+    ]
+}
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3CatLoverPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::my-cat-pics/*",
+        "arn:aws:s3:::my-cat-pics"
+      ]
+    },
+    {
+      "Sid": "IAMStarGazerPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "iam:ListUsers",
+        "iam:GetUser",
+        "iam:ListGroups",
+        "iam:GetGroup"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EC2ChefPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:RebootInstances"
+      ],
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "t2.micro",
+            "t3.micro",
+            "t4g.micro"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "RDSJesterPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "rds:CreateDBInstance",
+        "rds:DeleteDBInstance",
+        "rds:ModifyDBInstance"
+      ],
+      "Resource": "arn:aws:rds:*:*:db:*",
+      "Condition": {
+        "Bool": {
+          "aws:MultiFactorAuthPresent": "true"
+        }
+      }
+    },
+    {
+      "Sid": "SESInboxZeroHeroPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail",
+        "ses:SendTemplatedEmail"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "192.0.2.0/24"
+        }
+      }
+    },
+    {
+      "Sid": "CloudTrailTrackerPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:LookupEvents",
+        "cloudtrail:DescribeTrails",
+        "cloudtrail:GetEventSelectors"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ArnEquals": {
+          "cloudtrail:ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail"
+        }
+      }
+    },
+    {
+      "Sid": "CodeStarCaptainPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "codestar:CreateProject",
+        "codestar:DeleteProject",
+        "codestar:UpdateProject"
+      ],
+      "Resource": "arn:aws:codestar:*:*:project/*",
+      "Condition": {
+        "ForAllValues:StringEquals": {
+          "codestar:TeamRole": "captain"
+        }
+      }
+    },
+    {
+      "Sid": "LambdaMasterPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:DeleteFunction",
+        "lambda:UpdateFunctionCode",
+        "lambda:InvokeFunction"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ForAnyValue:StringEquals": {
+          "lambda:
+[
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "s3:ListAllMyBuckets",
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+            "s3:prefix": "laughing-buckets"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::silly-bucket/*"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "sqs:SendMessage",
+          "sqs:ReceiveMessage"
+        ],
+        "Resource": [
+          "arn:aws:sqs:::evil-queue"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem"
+        ],
+        "Resource": [
+          "arn:aws:dynamodb:*:*:happy-table"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ec2:StartInstances",
+          "ec2:StopInstances"
+        ],
+        "Resource": [
+          "arn:aws:ec2:*:*:amusing-instance"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "rds:CreateDBInstance",
+          "rds:DeleteDBInstance"
+        ],
+        "Resource": [
+          "arn:aws:rds:*:*:wacky-db"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "sqs:*",
+        "Resource": [
+          "arn:aws:sqs:*:*:clown-queue"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::fun-bucket/*"
+        ],
+        "Condition": {
+          "IpAddress": {
+            "aws:SourceIp": "192.0.2.0/24"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:*"
+        ],
+        "Resource": [
+          "arn:aws:s3:::unhappy-bucket"
+        ],
+        "Condition": {
+          "NotIpAddress": {
+            "aws:SourceIp": "192.0.2.1
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PotatoPenguin",
+            "Effect": "Deny",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::my-bucket/*"
+        },
+        {
+            "Sid": "BurgerBaboonPolicy",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::my-bucket/*"
+        },
+        {
+            "Sid": "PancakePandaPolicy",
+            "Effect": "Allow",
+            "Action": "dynamodb:Query",
+            "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/my-table"
+        },
+        {
+            "Sid": "WaffleWalrusPolicy",
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "arn:aws:sqs:us-east-1:123456789012:my-queue"
+        },
+        {
+            "Sid": "TacoTurtlePolicy",
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:us-east-1:123456789012:my-topic"
+        },
+        {
+            "Sid": "CookieCrabPolicy",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:us-east-1:123456789012:function:my-function"
+        },
+        {
+            "Sid": "DonutDolphinPolicy",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::my-bucket"
+        },
+        {
+            "Sid": "PizzaPenguinPolicy",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::my-bucket/pizza/*"
+        },
+        {
+            "Sid": "IceCreamIguanaPolicy",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::my-bucket/ice-cream/*"
+        },
+        {
+            "Sid": "PopcornPumaPolicy",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": [
+                "arn:aws:s3:::my-bucket/movies/*",
+                "arn:aws:s3:::my-bucket/tv-shows/*"
+            ]
+        }
+    ]
+}
+
